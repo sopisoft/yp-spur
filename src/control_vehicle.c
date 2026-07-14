@@ -46,6 +46,7 @@
 #include <ypspur/serial.h>
 #include <ypspur/ssm_spur_handler.h>
 #include <ypspur/utility.h>
+#include <ypspur/ypspur-coordinator.h>
 #include <ypspur/yprintf.h>
 
 // ライブラリ用
@@ -587,6 +588,11 @@ void control_loop(void)
       {
         hook(odometry, get_error_state_ptr());
       }
+    }
+
+    if (ypsc_should_stop())
+    {
+      break;
     }
 
     // スレッドの停止要求チェック

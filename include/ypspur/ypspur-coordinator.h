@@ -33,6 +33,9 @@ int ypsc_main(int argc, char* argv[]);
 int ypsc_kill();
 int ypsc_command(const YPSpur_msg* msg, YPSpur_msg* res_msg);
 void ypsc_set_odometry_hook(OdometryHook fn);
+void ypsc_request_stop(void);
+int ypsc_should_stop(void);
+void ypsc_clear_stop_request(void);
 
 #ifdef __cplusplus
 }

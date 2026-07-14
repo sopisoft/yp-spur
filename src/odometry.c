@@ -39,6 +39,7 @@
 #include <ypspur/serial.h>
 #include <ypspur/ssm_spur_handler.h>
 #include <ypspur/utility.h>
+#include <ypspur/ypspur-coordinator.h>
 #include <ypspur/yprintf.h>
 
 // ライブラリ用
@@ -658,11 +659,19 @@ int odometry_receive_loop(void)
   g_interval = SER_INTERVAL;
   while (1)
   {
+    if (ypsc_should_stop())
+    {
+      break;
+    }
     ret = serial_recieve(odometry_receive, NULL);
     if (param->parameter_applying)
     {
       yprintf(OUTPUT_LV_INFO, "Restarting odometry receive loop.\n");
       continue;
+    }
+    if (ypsc_should_stop())
+    {
+      break;
     }
     break;
   }

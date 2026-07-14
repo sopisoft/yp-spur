@@ -198,6 +198,7 @@ set(YPSPUR_COORDINATOR_LIBRARY_VERSION 1.0.0)
 set(YPSPUR_COORDINATOR_LIBRARY_SOVERSION 1)
 set(YPSPUR_COORDINATOR_SOURCES
   src/adinput.c
+  src/coordinator_runtime.c
   src/command_aux.c
   src/command.c
   src/command_get.c

@@ -61,6 +61,7 @@ int ypsc_main(int argc, char* argv[])
 
   g_simulation_exit = 0;
   g_exit_by_api = 0;
+  ypsc_clear_stop_request();
 
   const int ret = arg_analyze(argc, argv);
   if (option(OPTION_DAEMON))
@@ -536,6 +537,7 @@ void ypsc_set_odometry_hook(OdometryHook fn)
 int ypsc_kill()
 {
   g_exit_by_api = 1;
+  ypsc_request_stop();
   if (option(OPTION_WITHOUT_DEVICE))
   {
     g_simulation_exit = 1;
